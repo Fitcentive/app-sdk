@@ -34,9 +34,3 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-generic-extras" % "0.14.1",
   "io.circe" %% "circe-parser"         % "0.14.1",
 )
-
-dependencyOverrides ++= Seq(
-  "com.fasterxml.jackson.core" % "jackson-core"        % "2.11.4",
-  "com.fasterxml.jackson.core" % "jackson-annotations" % "2.11.4",
-  "com.fasterxml.jackson.core" % "jackson-databind"    % "2.11.4",
-)

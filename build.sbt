@@ -34,4 +34,7 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-generic"        % "0.14.1",
   "io.circe" %% "circe-generic-extras" % "0.14.1",
   "io.circe" %% "circe-parser"         % "0.14.1",
+  // Play JSON
+  "com.typesafe.play" %% "play-json" % "2.9.2",
+  "com.typesafe.play" %% "play"      % "2.8.16",
 )

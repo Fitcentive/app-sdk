@@ -15,4 +15,3 @@ trait JavaOps {
       }.fold(Future.failed, identity)
   }
 }
-``

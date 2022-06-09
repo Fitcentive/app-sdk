@@ -4,7 +4,11 @@ import anorm.NamedParameter
 
 trait AnormOps extends StringOps {
 
-  def makeParams[A](namedParameters: Seq[NamedParameter]): String =
+  /**
+    * Note - this can only be used for simple types
+    *        complex types that require casting may not work as intended
+    */
+  def makeOptionalSqlUpdateParams[A](namedParameters: Seq[NamedParameter]): String =
     namedParameters
       .map { p =>
         val snakeName = camelToSnakeCase(p.name)

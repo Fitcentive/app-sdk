@@ -9,4 +9,6 @@ trait TokenValidationService {
     subject: Option[String] = Option.empty,
     audience: Option[Set[String]] = Option.empty
   )(implicit decoder: Decoder[T]): Either[JwtValidationError, T]
+
+  def validateServiceSecret(token: String): Boolean
 }

@@ -2,7 +2,7 @@ package io.fitcentive.sdk.infrastructure
 
 import io.circe.Decoder
 import io.circe.parser.parse
-import io.fitcentive.sdk.config.JwtConfig
+import io.fitcentive.sdk.config.{JwtConfig, SecretConfig}
 import io.fitcentive.sdk.domain.{PublicKeyRepository, TokenValidationService}
 import io.fitcentive.sdk.error.JwtValidationError
 import io.fitcentive.sdk.error.JwtValidationError._
@@ -12,12 +12,15 @@ import pdi.jwt.exceptions.{JwtExpirationException, JwtNotBeforeException}
 import java.security.PublicKey
 import scala.util.matching.Regex
 
-class JwtTokenValidationService(config: JwtConfig, publicKeyRepository: PublicKeyRepository)
-  extends TokenValidationService {
+class AuthTokenValidationService(
+  _jwtConfig: JwtConfig,
+  secretConfig: SecretConfig,
+  publicKeyRepository: PublicKeyRepository
+) extends TokenValidationService {
 
-  private implicit val jwtConfig: JwtConfig = config
+  private implicit val jwtConfig: JwtConfig = _jwtConfig
 
-  private val authServer: String = config.issuer
+  private val authServer: String = jwtConfig.issuer
   private val Issuer: Regex = s"^$authServer/auth/realms/([^/]+)$$".r
   private val ExpiryOnly: JwtOptions = JwtOptions(signature = false, expiration = true, notBefore = true)
   private val SignatureOnly: JwtOptions = JwtOptions(signature = true, expiration = false, notBefore = false)
@@ -78,4 +81,6 @@ class JwtTokenValidationService(config: JwtConfig, publicKeyRepository: PublicKe
     } yield result
   }
 
+  override def validateServiceSecret(token: String): Boolean =
+    token == secretConfig.serviceSecret
 }

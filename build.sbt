@@ -37,5 +37,10 @@ libraryDependencies ++= Seq(
   // Play JSON
   "com.typesafe.play"       %% "play-json" % "2.9.2",
   "com.typesafe.play"       %% "play"      % "2.8.16",
-  "org.playframework.anorm" %% "anorm"     % "2.6.10"
+  "org.playframework.anorm" %% "anorm"     % "2.6.10",
+  // Keycloak
+  "org.keycloak" % "keycloak-core"         % "18.0.0",
+  "org.keycloak" % "keycloak-adapter-core" % "18.0.0",
+  // Auth
+  "com.github.jwt-scala" %% "jwt-circe" % "9.0.2",
 )

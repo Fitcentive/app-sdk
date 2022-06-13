@@ -7,7 +7,6 @@ import org.keycloak.adapters.KeycloakDeploymentBuilder
 import java.io.ByteArrayInputStream
 import java.security.PublicKey
 
-// todo - cache this in memory somehow
 class KeycloakPublicKeyRepository(keycloakServerUrl: String) extends PublicKeyRepository {
 
   def get(realm: String, kid: String): Option[PublicKey] = {

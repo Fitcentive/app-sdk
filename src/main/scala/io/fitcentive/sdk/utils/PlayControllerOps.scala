@@ -1,10 +1,12 @@
 package io.fitcentive.sdk.utils
 
 import io.fitcentive.sdk.error.DomainError
+import io.fitcentive.sdk.play.domain.UserRequest
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Reads}
 import play.api.mvc.Result
-import play.api.mvc.Results.BadRequest
+import play.api.mvc.Results.{BadRequest, Forbidden}
 
+import java.util.UUID
 import scala.concurrent.{ExecutionContext, Future}
 
 trait PlayControllerOps {
@@ -30,4 +32,10 @@ trait PlayControllerOps {
       }
     }
   }
+
+  def rejectIfNotEntitled[A](block: => Future[Result])(implicit request: UserRequest[A], userId: UUID): Future[Result] =
+    request.authorizedUser.userId match {
+      case `userId` => block
+      case _        => Future.successful(Forbidden("Not allowed!"))
+    }
 }

@@ -23,6 +23,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.scala-logging" %% "scala-logging"            % "3.9.4",
   "ch.qos.logback"              % "logback-classic"          % "1.3.0-alpha10",
   "net.logstash.logback"        % "logstash-logback-encoder" % "7.0.1",
+  "org.jboss.logging"           % "jboss-logging"            % "3.4.2.Final",
   //Google PubSub
   "com.google.cloud" % "google-cloud-pubsub"  % "1.115.1",
   "com.google.cloud" % "google-cloud-storage" % "2.2.3",
@@ -41,6 +42,6 @@ libraryDependencies ++= Seq(
   // Keycloak
   "org.keycloak" % "keycloak-core"         % "18.0.0",
   "org.keycloak" % "keycloak-adapter-core" % "18.0.0",
-  // Auth
+// Auth
   "com.github.jwt-scala" %% "jwt-circe" % "9.0.2",
 )

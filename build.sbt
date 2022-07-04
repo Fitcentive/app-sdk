@@ -16,7 +16,11 @@ cancelable in Global := true
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
 libraryDependencies ++= Seq(
-  "org.scala-lang.modules" %% "scala-java8-compat" % "1.0.2",
+  "com.typesafe.play" %% "play-jdbc" % "2.8.16",
+  // Anorm
+  "org.playframework.anorm" %% "anorm"              % "2.6.10",
+  "org.playframework.anorm" %% "anorm-postgres"     % "2.6.10",
+  "org.scala-lang.modules"  %% "scala-java8-compat" % "1.0.2",
   //Config
   "com.typesafe" % "config" % "1.4.1",
   //Logging
